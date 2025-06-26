@@ -66,3 +66,6 @@ def handle_callback(query):
             print("Failed to send to webhook:", e)
         query.answer("Joined!")
     return
+@app.route("/", methods=["GET"])
+def home():
+    return "Bot is running!"
