@@ -43,7 +43,7 @@ def handle_command(update):
             group = parts[1]
             keyboard = [[telegram.InlineKeyboardButton("JOIN", callback_data=f"join_{group}")]]
             reply_markup = telegram.InlineKeyboardMarkup(keyboard)
-            bot.send_message(chat_id=chat_id, text=f"🎉 Click JOIN to enter Group {group}'s raffle!", reply_markup=reply_markup)
+            bot.send_message(chat_id=chat_id, text=f"🎉 Click JOIN raffle!", reply_markup=reply_markup)
 
 # 處理按鈕點擊與 webhook 傳送
 def handle_callback(query):
