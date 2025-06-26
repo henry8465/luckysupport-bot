@@ -3,6 +3,7 @@ services:
     name: luckysupport-bot
     env: python
     plan: free
+    pythonVersion: 3.10.12
     buildCommand: ""
     startCommand: "gunicorn bot:app"
     envVars:
