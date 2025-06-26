@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: luckysupport-bot
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: "gunicorn bot:app"
+    envVars:
+      - key: TELEGRAM_TOKEN
+        value: your_token_here
+      - key: SHEET_A_WEBHOOK
+        value: https://your-sheet-a-webhook
+      - key: SHEET_B_WEBHOOK
+        value: https://your-sheet-b-webhook
