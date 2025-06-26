@@ -46,15 +46,19 @@ def handle_command(update):
 def handle_callback(query):
     user_id = query.from_user.id
     username = query.from_user.username or "unknown"
+    first_name = query.from_user.first_name or ""
+    last_name = query.from_user.last_name or ""
+    full_name = (first_name + " " + last_name).strip()
     group = query.data.split("_")[1]
     webhook_url = WEBHOOK_MAP[group]
 
+    payload = {
+        "user_id": user_id,
+        "username": username,
+        "name": full_name
+    }
+
     try:
-        # always send data to webhook; let Sheet decide if duplicate
-        payload = {
-            "user_id": user_id,
-            "username": username
-        }
         r = requests.post(webhook_url, json=payload)
         if r.text.strip() == "duplicate":
             query.answer("Already joined")
